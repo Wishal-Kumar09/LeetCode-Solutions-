@@ -5,12 +5,11 @@ class Solution(object):
         :rtype: int
         """
         min_element = float('inf')
-        steps = 0
-        for i in range(len(nums)):
+        n = len(nums)
+        for i in range(n):
             if nums[i] < min_element:
                 min_element = nums[i]
 
-        for j in range(len(nums)):
-            steps +=  nums[j] - min_element
+        return sum(nums) - (n * min_element)
 
-        return steps
+       
