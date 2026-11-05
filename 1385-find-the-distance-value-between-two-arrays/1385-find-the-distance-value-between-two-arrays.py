@@ -7,21 +7,11 @@ class Solution(object):
         :rtype: int
         """
         count = 0
-        i = 0
-        while i < len(arr1):
-            flag = False
-            j = 0
-            while j < len(arr2):
-                if abs(arr1[i]-arr2[j]) > d:
-                    flag = True
-                else:
-                    flag = False
-                    break
-                    i += 1
-                j += 1
-            if flag == True:
-                count += 1
-            i += 1
-
+        arr2.sort()
+        for i in arr1:
+            p = bisect.bisect_left(arr2, i)
+            if p == len(arr2) or abs(i - arr2[p]) > d:
+                if p == 0 or abs(i - arr2[p - 1]) > d:
+                    count += 1
         return count
             
